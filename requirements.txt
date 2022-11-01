@@ -5,3 +5,4 @@ streamlit==1.13.0
 Pillow
 matplotlib
 joblib
+openpyxl
