@@ -1,4 +1,4 @@
-pip=21.2.4
+pip=22.3
 pandas
 numpy
 numba==0.53.1
