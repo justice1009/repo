@@ -6,9 +6,9 @@ import pandas as pd
 st.set_page_config(layout="wide")
 
 st.sidebar.header('🎈Menu')
-name = st.sidebar.selectbox('KPI 실적', ['고객 Painpoint 실적', "안심품질지수"])
+name = st.sidebar.selectbox('KPI 실적', ['select', '고객 Painpoint 실적', "안심품질지수"])
 
-name2 = st.sidebar.selectbox('상세조회', ['고객 Painpoint 상세', "안심품질진단결과 상세"])
+name2 = st.sidebar.selectbox('상세조회', ['select', '고객 Painpoint 상세', "안심품질진단결과 상세"])
 
 if name == '고객 Painpoint 실적':
     st.subheader("임원/부문장 KPI 결과")
