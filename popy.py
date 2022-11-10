@@ -3,6 +3,8 @@ import streamlit as st
 import pandas as pd
 
 
+st.set_page_config(layout="wide")
+
 st.sidebar.header('🎈Menu')
 name = st.sidebar.selectbox('KPI 실적', ['고객 Painpoint 실적', "안심품질지수"])
 
