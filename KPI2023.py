@@ -10,17 +10,28 @@ st.set_page_config(layout="wide")
 st.sidebar.header('🎈Menu')
 name = st.sidebar.selectbox('KPI 실적', ['[Select]', '품질경영', "위기관리"])
 # name2 = st.sidebar.selectbox('상세조회', ['[Select]', '고객 Painpoint 상세'])
-pd.set_option('display.max.colwidth', 1500)
+# pd.set_option('display.max.colwidth', 800)
 
+if name == '[Select]':
+
+    st.subheader("■ 위기관리부문/ 품질경영팀")     
+    def main() :    
+        img = Image.open('qulity.png')
+        st.image(img, width=650)
+    if __name__ == "__main__" :
+        main()
+
+    def main() :    
+        img = Image.open('qulity3.jpg')
+        st.image(img, width=800)
+    if __name__ == "__main__" :
+        main()    
 
 if name == '품질경영':
-
     st.subheader("■ KPI 실적 모니터링_품질")     
-
     option2 = st.selectbox(
     'What year would you like to view??',
-    ('[연도 선택]','22년', '23년', '24년'))
-    
+    ('[연도 선택]','22년', '23년', '24년'))    
 
     option = st.selectbox(
     'What quarter would you like to view??',
