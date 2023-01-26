@@ -10,9 +10,7 @@ st.set_page_config(layout="wide")
 st.sidebar.header('🎈Menu')
 name = st.sidebar.selectbox('KPI 실적', ['[Select]', '품질경영', "위기관리"])
 # name2 = st.sidebar.selectbox('상세조회', ['[Select]', '고객 Painpoint 상세'])
-pd.set_option('display.max.colwidth', 1000)
-
-
+pd.set_option('display.max.colwidth', 1500)
 
 
 if name == '품질경영':
@@ -33,18 +31,29 @@ if name == '품질경영':
         if option == '3분기':
             def main() :    
                 # pd.set_option('display.max.columns', 200)
-                df= pd.read_excel("KPI2022.xlsx", sheet_name="3분기") # CSV 파일 불러오고 df 변수에 저장        
-                ds= df.fillna('')        
-                # ds.set_index('Part', inplace=True)
-                ds.style.set_properties(color="black", align="right")  
+                df= pd.read_excel("KPI2022.xlsx", sheet_name="3분기") # CSV 파일 불러오고 df 변수에 저장                        
+                # # CSS to inject contained in a string
+                # hide_table_row_index = """
+                # <style>
+                # thead tr th:first-child {display:none}
+                # tbody th {display:none}
+                # </style>
+                # """
+                # # Inject CSS with Markdown
+                # st.markdown(hide_table_row_index, unsafe_allow_html=True)
+
+                ds= df.fillna('')                            
+                
                 
 
                 def draw_color_cell(x,color):
                     color = f'background-color:{color}'
                     return color
+                
+                ds= ds.style.applymap(draw_color_cell,color="#FFFAF0",subset=pd.IndexSlice[:,['22년 목표','3분기 실적','전년동기 대비']]).set_precision(2) 
+
 
                 
-                ds= ds.style.applymap(draw_color_cell,color="#FFFAF0",subset=pd.IndexSlice[:,['3분기 목표','21년 3분기 누계 실적']]).set_precision(2) 
 
                 st.dataframe(ds, width=2500,height=420)     
 
@@ -78,7 +87,7 @@ if name == '품질경영':
                     color = f'background-color:{color}'
                     return color
                 
-                ds= ds.style.applymap(draw_color_cell,color="#FFFAF0",subset=pd.IndexSlice[:,['1분기 목표','21년 1분기 누계 실적']]).set_precision(2) 
+                ds= ds.style.applymap(draw_color_cell,color="#FFFAF0",subset=pd.IndexSlice[:,['22년 목표','1분기 실적','전년동기 대비']]).set_precision(2) 
                 st.dataframe(ds, width=2500,height=420)     
 
                 def convert_df(df):
@@ -109,7 +118,7 @@ if name == '품질경영':
                     color = f'background-color:{color}'
                     return color
                 
-                ds= ds.style.applymap(draw_color_cell,color="#FFFAF0",subset=pd.IndexSlice[:,['2분기 목표','21년 2분기 누계 실적']]).set_precision(2) 
+                ds= ds.style.applymap(draw_color_cell,color="#FFFAF0",subset=pd.IndexSlice[:,['22년 목표','2분기 실적','전년동기 대비']]).set_precision(2) 
                 st.dataframe(ds, width=2500,height=420)     
 
                 def convert_df(df):
@@ -141,7 +150,7 @@ if name == '품질경영':
                     color = f'background-color:{color}'
                     return color
                 
-                ds= ds.style.applymap(draw_color_cell,color="#FFFAF0",subset=pd.IndexSlice[:,['4분기 목표','21년 4분기 누계 실적']]).set_precision(2) 
+                ds= ds.style.applymap(draw_color_cell,color="#FFFAF0",subset=pd.IndexSlice[:,['22년 목표','4분기 실적', '전년동기 대비']]).set_precision(2) 
                 st.dataframe(ds, width=2500,height=420)     
 
                 def convert_df(df):
